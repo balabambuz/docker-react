@@ -7,3 +7,15 @@ before_install:
 
 script:
   - docker run -e CI=true balabambuz/docker-react npm run test
+
+deploy:
+provider: elasticbeanstalk
+region: us-east-1
+app: docker
+env: Dockerreact-env
+bucket_name: elasticbeanstalk-us-east-1-143642749076
+bucket_path: docker
+on:
+  branch: master #specifica il branch da utilizzare per le operazioni
+access_key_id: $PASSWORD
+
